@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:vader_popup/parts/buttons.dart';
+import 'package:vader_popup/parts/config.dart';
 import 'package:vader_popup/parts/content.dart';
 import 'package:vader_popup/parts/header.dart';
 
@@ -8,6 +9,7 @@ class DefaultLayout extends StatelessWidget {
     super.key,
     this.header,
     this.content,
+    this.config,
     this.buttons = const [],
     this.isScrollable = false,
     this.scrollController,
@@ -15,6 +17,7 @@ class DefaultLayout extends StatelessWidget {
 
   final PopupHeader? header;
   final PopupContent? content;
+  final PopupConfig? config;
   final List<PopupButton> buttons;
   final bool isScrollable;
   final ScrollController? scrollController;

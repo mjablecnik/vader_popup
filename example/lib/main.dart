@@ -1,10 +1,5 @@
-import 'package:art_buttons_kh/art_buttons_kh.dart';
 import 'package:example/button.dart';
 import 'package:flutter/material.dart';
-import 'package:vader_popup/parts/buttons.dart';
-import 'package:vader_popup/parts/common.dart';
-import 'package:vader_popup/parts/content.dart';
-import 'package:vader_popup/parts/header.dart';
 import 'package:vader_popup/vader_popup.dart';
 
 void main() {
@@ -40,6 +35,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    const dialog = PopupDialog();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -53,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Button(
               text: "Show info popup dialog",
               onPressed: () async {
-                VaderPopup.info(
+                dialog.info(
                   context,
                   title: "Info dialog",
                   message: "Zásilku nelze přesměrovat na výdejní místo.",
@@ -64,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
               text: "Show success popup dialog",
               color: Colors.green,
               onPressed: () async {
-                VaderPopup.success(
+                dialog.success(
                   context,
                   title: "Success dialog",
                   message: "Zásilku lze přesměrovat na výdejní místo.",
@@ -75,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
               text: "Show warning popup dialog",
               color: Colors.orange,
               onPressed: () async {
-                VaderPopup.warning(
+                dialog.warning(
                   context,
                   title: "Warning dialog",
                   message: "Zásilku lze přesměrovat na výdejní místo.",
@@ -86,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
               text: "Show error popup dialog",
               color: Colors.red,
               onPressed: () async {
-                VaderPopup.error(
+                dialog.error(
                   context,
                   title: "Error dialog",
                   message: "Zásilku nelze přesměrovat na výdejní místo.",
@@ -96,8 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Button(
               text: "Show custom popup dialog",
               onPressed: () async {
-                final result = await VaderPopup.customDialog(
-                  context: context,
+                final result = await PopupDialog(
                   header: const PopupHeader(
                     icon: Icon(Icons.info, color: Colors.blue, size: 70),
                     title: PopupText(
@@ -123,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                     ),
                   ],
-                );
+                ).show(context);
                 print(result);
               },
             ),
