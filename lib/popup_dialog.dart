@@ -43,6 +43,7 @@ class PopupDialog {
       ),
       content: PopupMessage(
         text: PopupText(text: message),
+        config: config,
       ),
       buttons: confirmButton == null && cancelButton == null && config.questionButtons != null
           ? config.questionButtons!
@@ -83,7 +84,9 @@ class PopupDialog {
       ),
       content: PopupMessage(
         text: PopupText(text: message),
+        config: config,
       ),
+      config: config,
       buttons: config.messageButtons ??
           [
             PopupButton(

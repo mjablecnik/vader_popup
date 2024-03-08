@@ -13,6 +13,10 @@ class PopupConfig {
     this.questionButtons,
     this.messageButtons,
     this.cancelButtonColor,
+    this.maxShortMessagesLines = 3,
+    this.longMessageGradientFraction = 0.4,
+    this.longMessageHeight = 315,
+    this.shortMessageHeight = 60,
     this.iconByType = const {
       PopupType.info: Icon(Icons.info, color: Colors.blue, size: 70),
       PopupType.success: Icon(Icons.check_circle, color: Colors.green, size: 70),
@@ -37,6 +41,10 @@ class PopupConfig {
   final String yesButtonLabel;
   final String noButtonLabel;
   final Color? cancelButtonColor;
+  final int maxShortMessagesLines;
+  final double longMessageGradientFraction;
+  final double longMessageHeight;
+  final double shortMessageHeight;
   final Map<PopupType, Icon?> iconByType;
   final Map<PopupType, Color> colorByType;
   final List<PopupButton>? questionButtons;
