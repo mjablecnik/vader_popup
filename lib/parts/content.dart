@@ -20,13 +20,13 @@ class PopupContent extends StatelessWidget {
 class PopupMessage extends PopupContent {
   const PopupMessage({
     super.key,
-    required this.text,
+    required this.message,
     this.textAlign = TextAlign.center,
     this.config = const PopupConfig(),
     this.height,
   });
 
-  final PopupText text;
+  final PopupText message;
   final TextAlign textAlign;
   final PopupConfig config;
   final double? height;
@@ -34,15 +34,16 @@ class PopupMessage extends PopupContent {
   @override
   Widget build(BuildContext context) {
     final textContent = Text(
-      text.text,
+      message.text,
       textAlign: textAlign,
-      style: text.style ?? const TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w400,
-      ),
+      style: message.style ??
+          const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w400,
+          ),
     );
 
-    if (text.text.split("\n").length > config.maxShortMessagesLines) {
+    if (message.text.split("\n").length > config.maxShortMessagesLines) {
       return SizedBox(
         height: config.longMessageHeight,
         child: FadingEdgeScrollView.fromSingleChildScrollView(
@@ -69,20 +70,75 @@ class PopupInput extends PopupContent {
   const PopupInput({
     super.key,
     this.label,
-    this.validate,
+    this.message,
+    this.config = const PopupConfig(),
+    this.onSubmit,
+    this.validator,
+    this.controller,
     this.keyboardType,
+    this.initialValue,
+    this.formState,
   });
 
   final PopupText? label;
-  final String? Function(String)? validate;
+  final PopupText? message;
+  final PopupConfig config;
+  final Function(String)? onSubmit;
+  final FormFieldValidator? validator;
+  final TextEditingController? controller;
   final TextInputType? keyboardType;
+  final String? initialValue;
+  final GlobalKey<FormState>? formState;
 
   @override
   Widget build(BuildContext context) {
-    return const CustomPlaceholder(
-      text: "Input",
-      width: double.infinity,
-      height: 60,
+    return Form(
+      key: formState,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      child: Wrap(
+        children: [
+          if (message != null)
+            PopupMessage(
+              message: message!,
+              height: config.inputMessageHeight,
+            ),
+          TextFormField(
+            cursorColor: Theme.of(context).primaryColor,
+            controller: controller,
+            style: const TextStyle(
+              fontSize: 14,
+              color: Colors.black,
+              fontWeight: FontWeight.w400,
+            ),
+            onFieldSubmitted: onSubmit,
+            validator: validator,
+            keyboardType: keyboardType,
+            initialValue: initialValue,
+            decoration: InputDecoration(
+              labelText: label?.text,
+              labelStyle: label?.style ??
+                  const TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w400,
+                  ),
+              contentPadding: const EdgeInsets.only(bottom: 10, top: 10, left: 10),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                borderSide: BorderSide(color: Colors.grey.shade400),
+              ),
+              border: OutlineInputBorder(
+                borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                borderSide: BorderSide(color: Colors.grey.shade400),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                borderSide: BorderSide(color: Colors.grey.shade400),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

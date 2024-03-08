@@ -19,8 +19,63 @@ class PopupDialog {
   final PopupConfig config;
   final List<Widget> buttons;
 
-  Future<dynamic> input() {
-    return Future.value();
+  Future<dynamic> input(
+    BuildContext context, {
+    required String title,
+    required String? message,
+    required String label,
+    PopupButton? confirmButton,
+    PopupButton? cancelButton,
+    Icon? icon,
+    FormFieldValidator? validator,
+    TextInputType? keyboardType,
+    String? initialValue,
+  }) {
+    final formState = GlobalKey<FormState>();
+    final inputController = TextEditingController();
+    onSubmit(String value) {
+      final result = formState.currentState?.validate();
+      if (result == true) {
+        Navigator.of(context).pop(value);
+      }
+    }
+
+    return PopupDialog(
+      header: PopupHeader(
+        icon: icon,
+        title: PopupText(text: title),
+      ),
+      content: PopupInput(
+        label: PopupText(text: label),
+        message: message != null ? PopupText(text: message) : null,
+        config: config,
+        formState: formState,
+        controller: inputController,
+        onSubmit: onSubmit,
+        validator: validator,
+        keyboardType: keyboardType,
+        initialValue: initialValue,
+      ),
+      config: config,
+      buttons: [
+        cancelButton ??
+            PopupButton(
+              label: config.cancelButtonLabel,
+              color: config.cancelButtonColor ?? Colors.grey.withOpacity(0.6),
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+            ),
+        confirmButton ??
+            PopupButton(
+              label: config.submitButtonLabel,
+              color: config.colorByType[PopupType.input] ?? Colors.blue,
+              onPressed: () {
+                onSubmit(inputController.text);
+              },
+            ),
+      ],
+    ).show(context);
   }
 
   Future<dynamic> choose(
@@ -123,7 +178,7 @@ class PopupDialog {
         title: PopupText(text: title),
       ),
       content: PopupMessage(
-        text: PopupText(text: message),
+        message: PopupText(text: message),
         config: config,
         height: type == PopupType.choose ? config.chooseMessageHeight : config.shortMessageHeight,
       ),

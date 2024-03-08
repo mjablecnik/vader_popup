@@ -50,6 +50,24 @@ class _MyHomePageState extends State<MyHomePage> {
             runSpacing: 10,
             children: <Widget>[
               Button(
+                text: "Show input dialog",
+                color: Colors.brown,
+                onPressed: () async {
+                  dialog.input(
+                    context,
+                    title: "Input dialog",
+                    message: "Zadejte vaše jméno",
+                    label: "Jméno",
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      return null;
+                    },
+                  ).then(print);
+                },
+              ),
+              Button(
                 text: "Dialog with long message",
                 color: Colors.purple,
                 onPressed: () async {
@@ -175,7 +193,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     content: const PopupMessage(
-                      text: PopupText(text: "Zásilku nelze přesměrovat na výdejní místo."),
+                      message: PopupText(text: "Zásilku nelze přesměrovat na výdejní místo."),
                     ),
                     buttons: [
                       PopupButton(
