@@ -4,11 +4,11 @@ import 'package:vader_popup/popup_dialog.dart';
 
 extension PopupDialogMessage on PopupDialog {
   Future<dynamic> info(
-      BuildContext context, {
-        required String title,
-        required String message,
-      }) {
-    return dialog(
+    BuildContext context, {
+    required String title,
+    required String message,
+  }) {
+    return this.message(
       context,
       type: PopupType.info,
       title: title,
@@ -17,11 +17,11 @@ extension PopupDialogMessage on PopupDialog {
   }
 
   Future<dynamic> success(
-      BuildContext context, {
-        required String title,
-        required String message,
-      }) {
-    return dialog(
+    BuildContext context, {
+    required String title,
+    required String message,
+  }) {
+    return this.message(
       context,
       type: PopupType.success,
       title: title,
@@ -30,11 +30,11 @@ extension PopupDialogMessage on PopupDialog {
   }
 
   Future<dynamic> warning(
-      BuildContext context, {
-        required String title,
-        required String message,
-      }) {
-    return dialog(
+    BuildContext context, {
+    required String title,
+    required String message,
+  }) {
+    return this.message(
       context,
       type: PopupType.warning,
       title: title,
@@ -43,11 +43,11 @@ extension PopupDialogMessage on PopupDialog {
   }
 
   Future<dynamic> error(
-      BuildContext context, {
-        required String title,
-        required String message,
-      }) {
-    return dialog(
+    BuildContext context, {
+    required String title,
+    required String message,
+  }) {
+    return this.message(
       context,
       type: PopupType.error,
       title: title,

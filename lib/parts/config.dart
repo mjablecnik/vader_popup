@@ -17,6 +17,7 @@ class PopupConfig {
     this.longMessageGradientFraction = 0.4,
     this.longMessageHeight = 315,
     this.shortMessageHeight = 60,
+    this.chooseMessageHeight = 36,
     this.iconByType = const {
       PopupType.info: Icon(Icons.info, color: Colors.blue, size: 70),
       PopupType.success: Icon(Icons.check_circle, color: Colors.green, size: 70),
@@ -31,7 +32,7 @@ class PopupConfig {
       PopupType.error: Colors.red,
       PopupType.question: Colors.blue,
       PopupType.input: Colors.blue,
-      PopupType.chooser: Colors.blue,
+      PopupType.choose: Colors.blue,
     },
   });
 
@@ -45,6 +46,7 @@ class PopupConfig {
   final double longMessageGradientFraction;
   final double longMessageHeight;
   final double shortMessageHeight;
+  final double chooseMessageHeight;
   final Map<PopupType, Icon?> iconByType;
   final Map<PopupType, Color> colorByType;
   final List<PopupButton>? questionButtons;

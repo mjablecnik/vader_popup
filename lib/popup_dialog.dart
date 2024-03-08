@@ -19,31 +19,28 @@ class PopupDialog {
   final PopupConfig config;
   final List<Widget> buttons;
 
-  input() {}
+  Future<dynamic> input() {
+    return Future.value();
+  }
 
-  choose(
+  Future<dynamic> choose(
     BuildContext context, {
     required String title,
     required String message,
     required List<PopupOption> options,
     Icon? icon,
-    double? messageHeight = 36,
   }) {
-    return PopupDialog(
-      header: PopupHeader(
-        icon: icon,
-        title: PopupText(text: title),
-      ),
-      content: PopupMessage(
-        text: PopupText(text: message),
-        height: messageHeight,
-        config: config,
-      ),
+    return dialog(
+      context,
+      title: title,
+      message: message,
+      icon: icon,
+      type: PopupType.choose,
       buttons: options,
-    ).show(context);
+    );
   }
 
-  question(
+  Future<dynamic> question(
     BuildContext context, {
     PopupType type = PopupType.question,
     required String title,
@@ -52,15 +49,12 @@ class PopupDialog {
     PopupButton? cancelButton,
     Icon? icon,
   }) {
-    return PopupDialog(
-      header: PopupHeader(
-        icon: icon ?? config.iconByType[type],
-        title: PopupText(text: title),
-      ),
-      content: PopupMessage(
-        text: PopupText(text: message),
-        config: config,
-      ),
+    return dialog(
+      context,
+      title: title,
+      message: message,
+      icon: icon,
+      type: PopupType.question,
       buttons: confirmButton == null && cancelButton == null && config.questionButtons != null
           ? config.questionButtons!
           : [
@@ -81,10 +75,10 @@ class PopupDialog {
                     },
                   ),
             ],
-    ).show(context);
+    );
   }
 
-  Future<dynamic> dialog(
+  Future<dynamic> message(
     BuildContext context, {
     required PopupType type,
     required String title,
@@ -93,16 +87,12 @@ class PopupDialog {
     Color? buttonColor,
     Icon? icon,
   }) {
-    return PopupDialog(
-      header: PopupHeader(
-        icon: icon ?? config.iconByType[type],
-        title: PopupText(text: title),
-      ),
-      content: PopupMessage(
-        text: PopupText(text: message),
-        config: config,
-      ),
-      config: config,
+    return dialog(
+      context,
+      type: type,
+      title: title,
+      message: message,
+      icon: icon,
       buttons: config.messageButtons ??
           [
             PopupButton(
@@ -114,6 +104,31 @@ class PopupDialog {
               },
             ),
           ],
+    );
+  }
+
+  Future<dynamic> dialog(
+    BuildContext context, {
+    required PopupType type,
+    required String title,
+    required String message,
+    String? buttonLabel,
+    Color? buttonColor,
+    Icon? icon,
+    List<Widget> buttons = const [],
+  }) {
+    return PopupDialog(
+      header: PopupHeader(
+        icon: icon ?? config.iconByType[type],
+        title: PopupText(text: title),
+      ),
+      content: PopupMessage(
+        text: PopupText(text: message),
+        config: config,
+        height: type == PopupType.choose ? config.chooseMessageHeight : config.shortMessageHeight,
+      ),
+      config: config,
+      buttons: buttons,
     ).show(context);
   }
 

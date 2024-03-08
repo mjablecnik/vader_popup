@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum PopupType { info, success, warning, error, question, input, chooser }
+enum PopupType { info, success, warning, error, question, input, choose }
 
 class PopupText {
   const PopupText({

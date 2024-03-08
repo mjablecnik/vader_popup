@@ -73,28 +73,28 @@ class _MyHomePageState extends State<MyHomePage> {
                     options: [
                       PopupOption(
                         label: "Always",
-                        color: Colors.green.shade800,
                         value: "always",
+                        color: Colors.green.shade800,
                       ),
                       const PopupOption(
                         label: "Yes",
-                        color: Colors.green,
                         value: "yes",
+                        color: Colors.green,
                       ),
                       const PopupOption(
                         label: "Maybe",
-                        color: Colors.orangeAccent,
                         value: "maybe",
+                        color: Colors.orangeAccent,
                       ),
                       const PopupOption(
                         label: "No",
-                        color: Colors.red,
                         value: "no",
+                        color: Colors.red,
                       ),
                       PopupOption(
                         label: "Never",
-                        color: Colors.red.shade800,
                         value: "never",
+                        color: Colors.red.shade800,
                       ),
                     ],
                   ).then(print);
