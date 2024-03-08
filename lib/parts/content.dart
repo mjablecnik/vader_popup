@@ -23,11 +23,13 @@ class PopupMessage extends PopupContent {
     required this.text,
     this.textAlign = TextAlign.center,
     this.config = const PopupConfig(),
+    this.height,
   });
 
   final PopupText text;
   final TextAlign textAlign;
   final PopupConfig config;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -53,9 +55,11 @@ class PopupMessage extends PopupContent {
         ),
       );
     } else {
-      return SizedBox(
-        height: config.shortMessageHeight,
-        child: textContent,
+      return Center(
+        child: SizedBox(
+          height: height ?? config.shortMessageHeight,
+          child: textContent,
+        ),
       );
     }
   }

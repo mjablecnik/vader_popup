@@ -17,15 +17,31 @@ class PopupDialog {
   final PopupHeader header;
   final PopupContent content;
   final PopupConfig config;
-  final List<PopupButton> buttons;
-
-  simpleMessage() {}
-
-  longMessage() {}
+  final List<Widget> buttons;
 
   input() {}
 
-  chooseList() {}
+  choose(
+    BuildContext context, {
+    required String title,
+    required String message,
+    required List<PopupOption> options,
+    Icon? icon,
+    double? messageHeight = 36,
+  }) {
+    return PopupDialog(
+      header: PopupHeader(
+        icon: icon,
+        title: PopupText(text: title),
+      ),
+      content: PopupMessage(
+        text: PopupText(text: message),
+        height: messageHeight,
+        config: config,
+      ),
+      buttons: options,
+    ).show(context);
+  }
 
   question(
     BuildContext context, {

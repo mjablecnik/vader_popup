@@ -18,7 +18,7 @@ class DefaultLayout extends StatelessWidget {
   final PopupHeader? header;
   final PopupContent? content;
   final PopupConfig? config;
-  final List<PopupButton> buttons;
+  final List<Widget> buttons;
   final bool isScrollable;
   final ScrollController? scrollController;
 

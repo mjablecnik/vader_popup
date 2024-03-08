@@ -19,17 +19,60 @@ class PopupButton extends StatelessWidget {
   final double? width;
   final double? height;
 
+  factory PopupButton.large({
+    required String label,
+    required Color color,
+    Function()? onPressed,
+    double? fontSize = 16,
+    double? height,
+  }) {
+    return PopupButton(
+      label: label,
+      color: color,
+      onPressed: onPressed,
+      fontSize: fontSize,
+      height: 50,
+      width: 230,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return ArtButtonsKh(
-      onPressed: onPressed ?? () {
-        Navigator.of(context).pop(false);
-      },
+      onPressed: onPressed ??
+          () {
+            Navigator.of(context).pop(false);
+          },
       width: width,
+      height: height,
       backgroundColor: color,
       text: label,
       textColor: Colors.black,
       fontSize: fontSize,
+    );
+  }
+}
+
+class PopupOption extends StatelessWidget {
+  const PopupOption({
+    super.key,
+    this.label,
+    this.value,
+    this.color,
+  });
+
+  final label;
+  final value;
+  final color;
+
+  @override
+  Widget build(BuildContext context) {
+    return PopupButton.large(
+      label: label,
+      color: color,
+      onPressed: () {
+        Navigator.of(context).pop(value);
+      },
     );
   }
 }

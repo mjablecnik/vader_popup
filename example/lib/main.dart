@@ -63,6 +63,44 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               ),
               Button(
+                text: "Choose from more options",
+                color: Colors.pink,
+                onPressed: () async {
+                  dialog.choose(
+                    context,
+                    title: "Choose dialog",
+                    message: "Choose one option:",
+                    options: [
+                      PopupOption(
+                        label: "Always",
+                        color: Colors.green.shade800,
+                        value: "always",
+                      ),
+                      const PopupOption(
+                        label: "Yes",
+                        color: Colors.green,
+                        value: "yes",
+                      ),
+                      const PopupOption(
+                        label: "Maybe",
+                        color: Colors.orangeAccent,
+                        value: "maybe",
+                      ),
+                      const PopupOption(
+                        label: "No",
+                        color: Colors.red,
+                        value: "no",
+                      ),
+                      PopupOption(
+                        label: "Never",
+                        color: Colors.red.shade800,
+                        value: "never",
+                      ),
+                    ],
+                  ).then(print);
+                },
+              ),
+              Button(
                 text: "Show info popup dialog",
                 onPressed: () async {
                   dialog
