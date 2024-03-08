@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vader_popup/parts/buttons.dart';
 import 'package:vader_popup/parts/common.dart';
 import 'package:vader_popup/parts/design.dart';
 
@@ -7,6 +8,11 @@ class PopupConfig {
     this.isAutoClosed = true,
     this.design = const PopupDesign(),
     this.confirmButtonLabel = "OK",
+    this.yesButtonLabel = "Yes",
+    this.noButtonLabel = "No",
+    this.questionButtons,
+    this.messageButtons,
+    this.cancelButtonColor,
     this.iconByType = const {
       PopupType.info: Icon(Icons.info, color: Colors.blue, size: 70),
       PopupType.success: Icon(Icons.check_circle, color: Colors.green, size: 70),
@@ -28,6 +34,11 @@ class PopupConfig {
   final bool isAutoClosed;
   final PopupDesign design;
   final String confirmButtonLabel;
+  final String yesButtonLabel;
+  final String noButtonLabel;
+  final Color? cancelButtonColor;
   final Map<PopupType, Icon?> iconByType;
   final Map<PopupType, Color> colorByType;
+  final List<PopupButton>? questionButtons;
+  final List<PopupButton>? messageButtons;
 }

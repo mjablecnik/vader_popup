@@ -23,12 +23,49 @@ class PopupDialog {
 
   longMessage() {}
 
-  question() {}
-
   input() {}
 
   chooseList() {}
 
+  question(
+    BuildContext context, {
+    PopupType type = PopupType.question,
+    required String title,
+    required String message,
+    PopupButton? confirmButton,
+    PopupButton? cancelButton,
+    Icon? icon,
+  }) {
+    return PopupDialog(
+      header: PopupHeader(
+        icon: icon ?? config.iconByType[type],
+        title: PopupText(text: title),
+      ),
+      content: PopupMessage(
+        text: PopupText(text: message),
+      ),
+      buttons: confirmButton == null && cancelButton == null && config.questionButtons != null
+          ? config.questionButtons!
+          : [
+              cancelButton ??
+                  PopupButton(
+                    label: config.noButtonLabel,
+                    color: config.cancelButtonColor ?? Colors.grey.withOpacity(0.6),
+                    onPressed: () {
+                      Navigator.of(context).pop(false);
+                    },
+                  ),
+              confirmButton ??
+                  PopupButton(
+                    label: config.yesButtonLabel,
+                    color: config.colorByType[type] ?? Colors.blue,
+                    onPressed: () {
+                      Navigator.of(context).pop(true);
+                    },
+                  ),
+            ],
+    ).show(context);
+  }
 
   Future<dynamic> dialog(
     BuildContext context, {
@@ -47,16 +84,17 @@ class PopupDialog {
       content: PopupMessage(
         text: PopupText(text: message),
       ),
-      buttons: [
-        PopupButton(
-          label: buttonLabel ?? config.confirmButtonLabel,
-          color: buttonColor ?? config.colorByType[type] ?? Colors.blue,
-          width: double.infinity,
-          onPressed: () {
-            Navigator.of(context).pop(true);
-          },
-        ),
-      ],
+      buttons: config.messageButtons ??
+          [
+            PopupButton(
+              label: buttonLabel ?? config.confirmButtonLabel,
+              color: buttonColor ?? config.colorByType[type] ?? Colors.blue,
+              width: double.infinity,
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+            ),
+          ],
     ).show(context);
   }
 

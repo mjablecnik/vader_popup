@@ -90,6 +90,17 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             Button(
+              text: "Show question popup dialog",
+              color: Colors.lightBlueAccent,
+              onPressed: () async {
+                dialog.question(
+                  context,
+                  title: "Question dialog",
+                  message: "Chcete zásilku přesměrovat na výdejní místo?",
+                ).then(print);
+              },
+            ),
+            Button(
               text: "Show custom popup dialog",
               onPressed: () async {
                 final result = await PopupDialog(
