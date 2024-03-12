@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:vader_popup/parts/buttons.dart';
 import 'package:vader_popup/parts/config.dart';
 import 'package:vader_popup/parts/content.dart';
 import 'package:vader_popup/parts/header.dart';

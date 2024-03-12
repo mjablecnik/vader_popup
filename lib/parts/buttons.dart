@@ -8,7 +8,7 @@ class PopupButton extends StatelessWidget {
     required this.color,
     this.onPressed,
     this.fontSize = 14,
-    this.width = 110,
+    this.width,
     this.height,
   });
 
@@ -38,17 +38,21 @@ class PopupButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ArtButtonsKh(
-      onPressed: onPressed ??
-          () {
-            Navigator.of(context).pop(false);
-          },
-      width: width,
-      height: height,
-      backgroundColor: color,
-      text: label,
-      textColor: Colors.black,
-      fontSize: fontSize,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return ArtButtonsKh(
+          onPressed: onPressed ??
+              () {
+                Navigator.of(context).pop(false);
+              },
+          width: width ?? constraints.maxWidth / 2.075,
+          height: height,
+          backgroundColor: color,
+          text: label,
+          textColor: Colors.black,
+          fontSize: fontSize,
+        );
+      }
     );
   }
 }

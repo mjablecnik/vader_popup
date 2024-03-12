@@ -212,10 +212,13 @@ class PopupDialog {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(config.design.borderRadius),
               ),
-              content: DefaultLayout(
-                header: header,
-                content: content,
-                buttons: buttons,
+              content: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: DefaultLayout(
+                  header: header,
+                  content: content,
+                  buttons: buttons,
+                ),
               ),
             ),
           ),
