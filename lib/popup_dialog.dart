@@ -8,12 +8,14 @@ import 'package:vader_popup/parts/header.dart';
 
 class PopupDialog {
   const PopupDialog({
+    required this.context,
     this.header = const PopupHeader(),
     this.content = const PopupContent(),
     this.config = const PopupConfig(),
     this.buttons = const [],
   });
 
+  final BuildContext context;
   final PopupHeader header;
   final PopupContent content;
   final PopupConfig config;
@@ -41,6 +43,7 @@ class PopupDialog {
     }
 
     return PopupDialog(
+      context: context,
       header: PopupHeader(
         icon: icon,
         title: PopupText(text: title),
@@ -78,15 +81,15 @@ class PopupDialog {
     ).show(context);
   }
 
-  Future<dynamic> choose(
-    BuildContext context, {
+  Future<dynamic> choose({
+    BuildContext? context,
     required String title,
     required String message,
     required List<PopupOption> options,
     Icon? icon,
   }) {
     return dialog(
-      context,
+      context: context ?? this.context,
       title: title,
       message: message,
       icon: icon,
@@ -95,8 +98,8 @@ class PopupDialog {
     );
   }
 
-  Future<dynamic> question(
-    BuildContext context, {
+  Future<dynamic> question({
+    BuildContext? context,
     PopupType type = PopupType.question,
     required String title,
     required String message,
@@ -105,7 +108,7 @@ class PopupDialog {
     Icon? icon,
   }) {
     return dialog(
-      context,
+      context: context ?? this.context,
       title: title,
       message: message,
       icon: icon,
@@ -118,7 +121,7 @@ class PopupDialog {
                     label: config.noButtonLabel,
                     color: config.cancelButtonColor ?? Colors.grey.withOpacity(0.6),
                     onPressed: () {
-                      Navigator.of(context).pop(false);
+                      Navigator.of(context ?? this.context).pop(false);
                     },
                   ),
               confirmButton ??
@@ -126,15 +129,15 @@ class PopupDialog {
                     label: config.yesButtonLabel,
                     color: config.colorByType[type] ?? Colors.blue,
                     onPressed: () {
-                      Navigator.of(context).pop(true);
+                      Navigator.of(context ?? this.context).pop(true);
                     },
                   ),
             ],
     );
   }
 
-  Future<dynamic> message(
-    BuildContext context, {
+  Future<dynamic> message({
+    BuildContext? context,
     required PopupType type,
     required String title,
     required String message,
@@ -143,7 +146,7 @@ class PopupDialog {
     Icon? icon,
   }) {
     return dialog(
-      context,
+      context: context ?? this.context,
       type: type,
       title: title,
       message: message,
@@ -155,15 +158,15 @@ class PopupDialog {
               color: buttonColor ?? config.colorByType[type] ?? Colors.blue,
               width: double.infinity,
               onPressed: () {
-                Navigator.of(context).pop(true);
+                Navigator.of(context ?? this.context).pop(true);
               },
             ),
           ],
     );
   }
 
-  Future<dynamic> dialog(
-    BuildContext context, {
+  Future<dynamic> dialog({
+    BuildContext? context,
     required PopupType type,
     required String title,
     required String message,
@@ -173,6 +176,7 @@ class PopupDialog {
     List<Widget> buttons = const [],
   }) {
     return PopupDialog(
+      context: context ?? this.context,
       header: PopupHeader(
         icon: icon ?? config.iconByType[type],
         title: PopupText(text: title),
@@ -184,14 +188,14 @@ class PopupDialog {
       ),
       config: config,
       buttons: buttons,
-    ).show(context);
+    ).show(context ?? this.context);
   }
 
-  Future<dynamic> show(BuildContext context) {
+  Future<dynamic> show([BuildContext? context]) {
     return showGeneralDialog(
-      context: context,
+      context: context ?? this.context,
       barrierDismissible: config.isAutoClosed,
-      barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
+      barrierLabel: MaterialLocalizations.of(context ?? this.context).modalBarrierDismissLabel,
       pageBuilder: (context, animation, secondaryAnimation) {
         return GestureDetector(
           onTap: () {
