@@ -36,7 +36,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    final dialog = PopupDialog(context: context);
+    const dialog = PopupDialog();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -73,6 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () async {
                   dialog
                       .info(
+                        context: context,
                         title: "Long message dialog",
                         message: longMessage,
                       )
@@ -84,6 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.pink,
                 onPressed: () async {
                   dialog.choose(
+                    context: context,
                     title: "Choose dialog",
                     message: "Choose one option:",
                     options: [
@@ -121,6 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () async {
                   dialog
                       .info(
+                        context: context,
                         title: "Info dialog",
                         message: "Zásilku nelze přesměrovat na výdejní místo.",
                       )
@@ -133,6 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () async {
                   dialog
                       .success(
+                        context: context,
                         title: "Success dialog",
                         message: "Zásilku lze přesměrovat na výdejní místo.",
                       )
@@ -145,6 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () async {
                   dialog
                       .warning(
+                        context: context,
                         title: "Warning dialog",
                         message: "Zásilku lze přesměrovat na výdejní místo.",
                       )
@@ -157,6 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () async {
                   dialog
                       .error(
+                        context: context,
                         title: "Error dialog",
                         message: "Zásilku nelze přesměrovat na výdejní místo.",
                       )
@@ -169,6 +175,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () async {
                   dialog
                       .question(
+                        context: context,
                         title: "Question dialog",
                         message: "Chcete zásilku přesměrovat na výdejní místo?",
                       )
@@ -179,7 +186,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 text: "Show custom popup dialog",
                 onPressed: () async {
                   final result = await PopupDialog(
-                    context: context,
                     header: const PopupHeader(
                       icon: Icon(Icons.info, color: Colors.blue, size: 70),
                       title: PopupText(
