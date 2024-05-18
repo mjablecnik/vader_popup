@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   art_buttons_kh: ^0.0.7
+  modal_bottom_sheet: ^3.0.0
   fading_edge_scrollview: ^4.1.1
 
 dev_dependencies:

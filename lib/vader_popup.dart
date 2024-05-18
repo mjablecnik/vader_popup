@@ -2,6 +2,7 @@ library vader_popup;
 
 export 'popup_dialog_message.dart';
 export 'popup_dialog.dart';
+export 'popup_modal.dart';
 
 export 'parts/buttons.dart';
 export 'parts/config.dart';
