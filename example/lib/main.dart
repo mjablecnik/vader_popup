@@ -37,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     const dialog = PopupDialog();
+    const modal = PopupModal();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -213,6 +214,81 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                   ).show(context);
                   print(result);
+                },
+              ),
+              Button(
+                text: "Show modal popup",
+                color: Colors.deepPurpleAccent,
+                onPressed: () async {
+                  await modal.show(
+                    context,
+                    padding: const EdgeInsets.all(20),
+                    body: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Container(
+                              width: 32.0,
+                              height: 32.0,
+                              decoration: BoxDecoration(
+                                color: Colors.grey[850],
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.2),
+                                    spreadRadius: 2,
+                                    blurRadius: 13,
+                                    offset: const Offset(5, 6),
+                                  ),
+                                ],
+                              ),
+                              child: IconButton(
+                                icon: const Icon(Icons.close),
+                                color: Colors.white,
+                                padding: EdgeInsets.zero,
+                                onPressed: Navigator.of(context).pop,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 12),
+                        Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.only(left: 16),
+                          child: Wrap(
+                            runSpacing: 5,
+                            direction: Axis.vertical,
+                            children: [
+                              const Text(
+                                "Test message",
+                                style: TextStyle(
+                                  decoration: TextDecoration.none,
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  height: 1.2,
+                                  letterSpacing: -0.36,
+                                ),
+                              ),
+                              Text(
+                                "Test description",
+                                style: TextStyle(
+                                  color: Colors.black.withOpacity(0.8),
+                                  decoration: TextDecoration.none,
+                                  fontSize: 12,
+                                  height: 1.4,
+                                  letterSpacing: -0.07,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
                 },
               ),
             ],

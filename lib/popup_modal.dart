@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class PopupModal {
+  const PopupModal();
+
   Future<dynamic> show(
     BuildContext context, {
     EdgeInsetsGeometry padding = EdgeInsets.zero,
