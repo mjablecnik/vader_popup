@@ -1,3 +1,15 @@
-## 0.0.1
+## 0.1.0
 
-* TODO: Describe initial release.
+* Add popup dialogs
+    * Input dialog
+    * With long message
+    * With more buttons (options)
+    * Question dialog
+* Add standard dialogs
+    * Info 
+    * Success
+    * Warning
+    * Error
+* Add custom popup dialog
+* Add basic modal popup
+  
