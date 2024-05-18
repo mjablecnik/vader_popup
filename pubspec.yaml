@@ -1,5 +1,6 @@
 name: vader_popup
 description: Flutter popup library
+repository: https://github.com/mjablecnik/vader_popup
 version: 0.1.0
 
 environment:
