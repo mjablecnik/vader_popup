@@ -139,4 +139,4 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 Copyright © 2024 [Martin Jablečník](https://github.com/mjablecnik).<br />
-This project is licensed under [MIT License](https://github.com/mjablecnik/vader_popup/blob/main/LICENSE).
+This project is licensed under [MIT License](https://github.com/mjablecnik/vader_popup/blob/master/LICENSE).
