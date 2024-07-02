@@ -1,3 +1,7 @@
+## 0.1.1
+* Fix dialog size in desktop application
+* Fix default color in PopupOption
+
 ## 0.1.0
 
 * Add popup dialogs
