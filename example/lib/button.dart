@@ -15,14 +15,17 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ArtButtonsKh(
-      text: text,
-      width: 280,
-      height: 56,
-      fontSize: 18,
-      textColor: Colors.black,
-      backgroundColor: color,
-      onPressed: onPressed,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ArtButtonsKh(
+        text: text,
+        width: 300,
+        height: 56,
+        fontSize: 18,
+        textColor: Colors.black,
+        backgroundColor: color,
+        onPressed: onPressed,
+      ),
     );
   }
 }
