@@ -200,8 +200,8 @@ class PopupDialog {
             }
           },
           child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
+            width: config.dialogSize.width,
+            height: config.dialogSize.height,
             color: Colors.black.withOpacity(0.1),
             child: AlertDialog(
               backgroundColor: config.design.backgroundColor,
@@ -209,7 +209,7 @@ class PopupDialog {
                 borderRadius: BorderRadius.circular(config.design.borderRadius),
               ),
               content: SizedBox(
-                width: MediaQuery.of(context).size.width,
+                width: config.dialogSize.width,
                 child: DefaultLayout(
                   header: header,
                   content: content,

@@ -7,6 +7,7 @@ class PopupConfig {
   const PopupConfig({
     this.isAutoClosed = true,
     this.design = const PopupDesign(),
+    this.dialogSize = const Size(200, 400),
     this.confirmButtonLabel = "OK",
     this.submitButtonLabel = "Submit",
     this.cancelButtonLabel = "Cancel",
@@ -40,6 +41,7 @@ class PopupConfig {
   });
 
   final bool isAutoClosed;
+  final Size dialogSize;
   final PopupDesign design;
   final String confirmButtonLabel;
   final String submitButtonLabel;
