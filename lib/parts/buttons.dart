@@ -60,20 +60,20 @@ class PopupButton extends StatelessWidget {
 class PopupOption extends StatelessWidget {
   const PopupOption({
     super.key,
-    this.label,
-    this.value,
+    required this.label,
+    required this.value,
     this.color,
   });
 
-  final label;
-  final value;
-  final color;
+  final String label;
+  final String value;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     return PopupButton.large(
       label: label,
-      color: color,
+      color: color ?? Colors.grey,
       onPressed: () {
         Navigator.of(context).pop(value);
       },

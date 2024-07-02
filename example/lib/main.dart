@@ -101,7 +101,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       const PopupOption(
                         label: "Maybe",
                         value: "maybe",
-                        color: Colors.orangeAccent,
                       ),
                       const PopupOption(
                         label: "No",
