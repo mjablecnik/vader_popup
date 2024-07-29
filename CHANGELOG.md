@@ -1,3 +1,6 @@
+## 0.1.2
+* Add possibility to add any value into PopupOption
+
 ## 0.1.1
 * Fix dialog size in desktop application
 * Fix default color in PopupOption

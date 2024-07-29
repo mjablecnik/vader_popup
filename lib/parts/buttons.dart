@@ -57,7 +57,7 @@ class PopupButton extends StatelessWidget {
   }
 }
 
-class PopupOption extends StatelessWidget {
+class PopupOption<T> extends StatelessWidget {
   const PopupOption({
     super.key,
     required this.label,
@@ -66,7 +66,7 @@ class PopupOption extends StatelessWidget {
   });
 
   final String label;
-  final String value;
+  final T value;
   final Color? color;
 
   @override
