@@ -23,7 +23,7 @@ Add the following dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  vader_popup: ^0.1.0
+  vader_popup: ^0.1.2
 ```
 
 Then run:
