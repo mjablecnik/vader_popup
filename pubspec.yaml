@@ -2,15 +2,15 @@ name: vader_popup
 description: Flutter popup library
 issue_tracker: https://github.com/mjablecnik/vader_popup/issues
 repository: https://github.com/mjablecnik/vader_popup
-version: 0.1.2+1
+version: 0.2.0
 
 topics:
   - popup
   - vader
 
 environment:
-  sdk: '>=3.4.0 <4.0.0'
-  flutter: ">=1.17.0"
+  sdk: '>=3.7.0 <4.0.0'
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
@@ -22,7 +22,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

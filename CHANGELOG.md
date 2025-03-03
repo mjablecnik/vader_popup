@@ -1,3 +1,6 @@
+## 0.2.0
+* Update dependencies
+  
 ## 0.1.2
 * Add possibility to add any value into PopupOption
 
