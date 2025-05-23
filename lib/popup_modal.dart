@@ -21,7 +21,7 @@ class PopupModal {
       duration: const Duration(milliseconds: 300),
       enableDrag: true,
       backgroundColor: color,
-      barrierColor: Colors.black.withOpacity(barrierOpacity),
+      barrierColor: Colors.black.withAlpha((255 * barrierOpacity).round()),
       builder: (context) => FractionallySizedBox(
         heightFactor: heightFactor ?? (100 - (screenHeight - height) / 100 * (screenHeight / 100)) / 100,
         child: ModalLayout(

@@ -196,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     buttons: [
                       PopupButton(
                         label: "Cancel",
-                        color: Colors.grey.withOpacity(0.4),
+                        color: Colors.grey.withAlpha(100),
                         onPressed: () {
                           Navigator.of(context).pop("Left button");
                         },
@@ -242,7 +242,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           Text(
                             "Test description",
                             style: TextStyle(
-                              color: Colors.black.withOpacity(0.8),
+                              color: Colors.black.withAlpha(204),
                               decoration: TextDecoration.none,
                               fontSize: 12,
                               height: 1.4,

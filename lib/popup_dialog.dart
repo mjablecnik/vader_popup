@@ -61,7 +61,7 @@ class PopupDialog {
         cancelButton ??
             PopupButton(
               label: config.cancelButtonLabel,
-              color: config.cancelButtonColor ?? Colors.grey.withOpacity(0.6),
+              color: config.cancelButtonColor ?? Colors.grey.withAlpha(153),
               onPressed: () {
                 Navigator.of(context).pop(false);
               },
@@ -116,7 +116,7 @@ class PopupDialog {
               cancelButton ??
                   PopupButton(
                     label: config.noButtonLabel,
-                    color: config.cancelButtonColor ?? Colors.grey.withOpacity(0.6),
+                    color: config.cancelButtonColor ?? Colors.grey.withAlpha(153),
                     onPressed: () {
                       Navigator.of(context).pop(false);
                     },
@@ -202,7 +202,7 @@ class PopupDialog {
           child: Container(
             width: config.dialogSize.width,
             height: config.dialogSize.height,
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withAlpha(25),
             child: AlertDialog(
               backgroundColor: config.design.backgroundColor,
               shape: RoundedRectangleBorder(

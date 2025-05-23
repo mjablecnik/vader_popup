@@ -36,7 +36,7 @@ class ModalLayout extends StatelessWidget {
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
+                          color: Colors.black.withAlpha(51), // 0.2 * 255 = 51
                           spreadRadius: 2,
                           blurRadius: 13,
                           offset: const Offset(5, 6),

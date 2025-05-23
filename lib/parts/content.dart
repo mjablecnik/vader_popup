@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:vader_popup/parts/common.dart';
 import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
 import 'package:vader_popup/parts/config.dart';
